@@ -27,6 +27,8 @@ Existe um lapso no ficheiro stack.c, na linha 14. O carectere ')' está a mais. 
 
 * Aula11 - TP9
 
+* Aula12 - TP10
+
 
 
 
