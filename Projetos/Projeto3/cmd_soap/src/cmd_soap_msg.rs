@@ -6,31 +6,39 @@ use sha2::{Sha256, Sha512, Digest};
 
 use hyper::{Client; Call};
 
+// Função que devolve o URL do WSDL do SCMD (preprod ou prod)
+fn get_wsdl(env: i32) -> &'static str {
 
-fn get_wsdl(env: i32){
-    /*Devolve URL do WSDL do SCMD.
+    	/*Devolve URL do WSDL do SCMD.
 
-    Parameters
-    ----------
-    t : int
-        WSDL a devolver: 0 para preprod, 1 para prod.
+    	Parameters
+    	----------
+    	t : int
+       	    WSDL a devolver: 0 para preprod, 1 para prod.
 
-    Returns
-    -------
-    string
-        URL do WSDL do SCMD.
-    */
-        
-    wsdl = [
-        0: "https://preprod.cmd.autenticacao.gov.pt/Ama.Authentication.Frontend/CCMovelDigitalSignature.svc?wsdl";
-        1: "https://cmd.autenticacao.gov.pt/Ama.Authentication.Frontend/CCMovelDigitalSignature.svc?wsdl"
-    ];
-    // Get the function from switcher dictionary
-    if env == 0 || env == 1 {
-        return wsdl[env];
-    } else {
-        return "No valid WSDL";
-    }
+   	Returns
+        -------
+        string
+            URL do WSDL do SCMD.
+
+        */
+
+        let mut array = ["";2];
+
+        array[0] = "https://preprod.cmd.autenticacao.gov.pt/Ama.Authentication.Frontend/CCMovelDigitalSignature.svc?wsdl";
+        array[1] = "https://cmd.autenticacao.gov.pt/Ama.Authentication.Frontend/CCMovelDigitalSignature.svc?wsdl";
+
+
+
+        if env == 0 || env == 1 {
+
+            return array[env as usize];
+
+        } else {
+
+            return "No valid WSDL";
+        }
+
 }
 
 fn getclient(){
